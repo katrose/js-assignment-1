@@ -47,6 +47,41 @@ const data = [
 // Instructions
 // Take the data above and display it as tiles on the page
 
+// Loop through data array
+for (let i = 0; i < data.length; i++) {
 
+    // Create card div
+    let newCard = document.createElement('div');
+    newCard.className = 'card';
 
+    // TOPIC -------------------------------------------
+    // Declare topic variable
+    let topic = document.createElement('p');
+    // Set CSS class name
+    topic.className = 'topic';
+    // Set topic text
+    let topicText = document.createTextNode(data[i]['topic']);
+    topic.appendChild(topicText);
+    // Add topic to div
+    newCard.appendChild(topic);
 
+    // TITLE -------------------------------------------
+    let title = document.createElement('h2');
+    title.className = 'title';
+    let titleText = document.createTextNode(data[i]['title']);
+    title.appendChild(titleText);
+    newCard.appendChild(title);
+
+    // PRICE BUTTON -----------------------------------
+    let price = document.createElement('div');
+    price.className = ('buy-button');
+    let priceText = document.createTextNode("Read for " + data[i]['price']);
+    price.appendChild(priceText);
+    newCard.appendChild(price);
+
+    // COLOR -------------------------------------------
+    newCard.style.backgroundColor = data[i]['color'];
+
+    // Append card to container
+    document.querySelector('.card-row').appendChild(newCard);
+}
