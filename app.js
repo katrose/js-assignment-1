@@ -47,9 +47,7 @@ const data = [
 // Instructions
 // Take the data above and display it as tiles on the page
 
-// Loop through data array
-for (let i = 0; i < data.length; i++) {
-
+data.forEach(function(article) {
     // Create card div
     let newCard = document.createElement('div');
     newCard.className = 'card';
@@ -60,7 +58,7 @@ for (let i = 0; i < data.length; i++) {
     // Set CSS class name
     topic.className = 'topic';
     // Set topic text
-    let topicText = document.createTextNode(data[i].topic);
+    let topicText = document.createTextNode(article.topic);
     topic.appendChild(topicText);
     // Add topic to div
     newCard.appendChild(topic);
@@ -68,20 +66,20 @@ for (let i = 0; i < data.length; i++) {
     // TITLE -------------------------------------------
     let title = document.createElement('h2');
     title.className = 'title';
-    let titleText = document.createTextNode(data[i].title);
+    let titleText = document.createTextNode(article.title);
     title.appendChild(titleText);
     newCard.appendChild(title);
 
     // PRICE BUTTON -----------------------------------
     let price = document.createElement('div');
     price.className = ('buy-button');
-    let priceText = document.createTextNode("Read for " + data[i].price);
+    let priceText = document.createTextNode("Read for " + article.price);
     price.appendChild(priceText);
     newCard.appendChild(price);
 
     // COLOR -------------------------------------------
-    newCard.style.backgroundColor = data[i].color;
+    newCard.style.backgroundColor = article.color;
 
     // Append card to container
     document.querySelector('.card-row').appendChild(newCard);
-}
+})
