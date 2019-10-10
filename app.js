@@ -44,10 +44,10 @@ const data = [
     }
 ]
 
-// Instructions
-// Take the data above and display it as tiles on the page
 
-// Loop through objects in the DATA array
+/** 
+ * "MAIN" -- Loop through objects in given data array
+ */ 
 data.forEach(function(article) {
 
     // Create card div
@@ -70,7 +70,9 @@ data.forEach(function(article) {
 // HELPER FUNCTIONS
 // -----------------------------------------------------
 
-// populateCard() -- creates an HTML object with an object key (elementType) for the HTML tag, the key's associated value (content) as content, and appends it to a container (parentDiv)
+/** 
+ * populateCard() -- creates an HTML object with an object key (elementType) for the HTML tag, the key's associated value (content) as content, and * appends it to a container (parentDiv)
+ */ 
 function populateCard(elementType, content, parentDiv) {
 
     // Create an HTML element for all key/value pairs in object except for color
@@ -92,10 +94,11 @@ function populateCard(elementType, content, parentDiv) {
         // Append to parent
         parentDiv.appendChild(cardElement);
     }
-
 }
 
-// getHtmlTag() -- Takes a key from object and "converts" it to appropriate HTML tag
+/** 
+ * getHtmlTag() -- Takes a key from object and "converts" it to appropriate HTML tag
+ */ 
 function getHtmlTag(elementType) {
 
     if (elementType == 'topic') {
@@ -109,7 +112,9 @@ function getHtmlTag(elementType) {
     }
 }
 
-// getCssClassName() -- Takes a key from object and "converts" it to appropriate CSS class name as defined in stylesheet
+/** 
+ * getCssClassName() -- Takes a key from object and "converts" it to appropriate CSS class name as defined in stylesheet
+ */
 function getCssClassName(elementType) {
 
     if (elementType == 'topic') {
@@ -123,8 +128,11 @@ function getCssClassName(elementType) {
     }
 }
 
-// getContent() -- Checks element type and returns the content of element accordingly
+/**
+ * getContent() -- Checks if element type is 'price' and if true, returns a concatenated string
+ */
 function getContent(elementType, content) {
+
     if (elementType == 'price') {
         return "Read for " + content;
     }
