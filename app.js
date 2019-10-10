@@ -51,7 +51,7 @@ const data = [
 data.forEach(function(article) {
 
     // Create card div
-    let newCard = document.createElement('div');
+    const newCard = document.createElement('div');
     newCard.className = 'card';
 
     // Loop through key/value pairs in each object in the DATA array
@@ -76,14 +76,18 @@ function populateCard(elementType, content, parentDiv) {
     // Create an HTML element for all key/value pairs in object except for color
     if (elementType != 'color') {
 
+        const htmlTag     = getHtmlTag(elementType);
+        const cssClass    = getCssClassName(elementType);
+        const textContent = getContent(elementType, content);
+
         // Create the HTML element
-        let cardElement = document.createElement(getHtmlTag(elementType));
+        const cardElement = document.createElement(htmlTag);
 
         // Set the class of the element
-        cardElement.className = getCssClassName(elementType);
+        cardElement.className = cssClass;
 
         // Set content of element
-        cardElement.appendChild(document.createTextNode(getContent(elementType, content)));
+        cardElement.appendChild(document.createTextNode(textContent));
 
         // Append to parent
         parentDiv.appendChild(cardElement);
