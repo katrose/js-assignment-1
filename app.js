@@ -56,8 +56,7 @@ data.forEach(function(article) {
 
     // Loop through key/value pairs in each object in the DATA array
     for (var key in article) {
-        // Create HTML element for each key/value pair
-        let newElement = createCardElement(key, article[key], newCard);
+        populateCard(key, article[key], newCard);
     }
 
     // Set color
@@ -71,8 +70,8 @@ data.forEach(function(article) {
 // HELPER FUNCTIONS
 // -----------------------------------------------------
 
-// createCardElement() -- takes an object key (elementType), its associated value (content), creates an HTML element accordingly, and appends it to a container (parentDiv)
-function createCardElement(elementType, content, parentDiv) {
+// populateCard() -- creates an HTML object with an object key (elementType) for the HTML tag, the key's associated value (content) as content, and appends it to a container (parentDiv)
+function populateCard(elementType, content, parentDiv) {
 
     // Create an HTML element for all key/value pairs in object except for color
     if (elementType != 'color') {
@@ -94,6 +93,7 @@ function createCardElement(elementType, content, parentDiv) {
         // Append to parent
         parentDiv.appendChild(cardElement);
     }
+
 }
 
 // FUNCTION: GET HTML TAG -- Takes a key from object and "converts" it to appropriate HTML tag
