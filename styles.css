@@ -53,6 +53,16 @@ nav .container ul li {
 }
 
 /* TILES */
+.sort-button {
+    /* Duplicate code for now */
+    background: white;
+    color: black;
+    border-radius: 4px;
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
 .card-row {
     display: flex;
     flex-wrap: wrap;
