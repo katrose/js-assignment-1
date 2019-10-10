@@ -45,15 +45,18 @@ const data = [
 ]
 
 
-/** 
- * "MAIN" FUNCTION -- Display page with given array
- */ 
-
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+"MAIN" FUNCTION: Display cards on the page
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 displayCards(data);
 
-// -----------------------------------------------------
-// FUNCTION DEFINITIONS
-// -----------------------------------------------------
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+FUNCTION DEFINITIONS
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/**
+ * Takes an array of objects and outputs them as <div> elements in the DOM.
+ * @param {object} elementArray An array of objects representing articles.
+ */
 function displayCards(elementArray) {
 
     elementArray.forEach(function(article) {
@@ -76,9 +79,12 @@ function displayCards(elementArray) {
 
 }
 
-/** 
- * populateCard() -- creates an HTML object with an object key (elementType) for the HTML tag, the key's associated value (content) as content, and * appends it to a container (parentDiv).
- */ 
+/**
+ * Creates an HTML element using the data in an object, and appends the HTML element to its parent container.
+ * @param {string} elementType A string that represents current object key.
+ * @param {string} content A string that represents value associated with current object key.
+ * @param {object} parentDiv An object that represents the "card" DOM element that will contain the key/value pairs.
+ */
 function populateCard(elementType, content, parentDiv) {
 
     // Create an HTML element for all key/value pairs in object except for color
@@ -104,9 +110,10 @@ function populateCard(elementType, content, parentDiv) {
     }
 }
 
-/** 
- * getHtmlTag() -- Takes a key from object and "converts" it to appropriate HTML tag
- */ 
+/**
+ * Helper function that converts an object key to an HTML tag string.
+ * @param {string} elementType A string that represents current object key.
+ */
 function getHtmlTag(elementType) {
 
     if (elementType == 'topic') {
@@ -120,8 +127,9 @@ function getHtmlTag(elementType) {
     }
 }
 
-/** 
- * getCssClassName() -- Takes a key from object and "converts" it to appropriate CSS class name as defined in stylesheet
+/**
+ * Helper function that converts an object key to a CSS class string.
+ * @param {string} elementType A string that represents current object key.
  */
 function getCssClassName(elementType) {
 
@@ -137,7 +145,9 @@ function getCssClassName(elementType) {
 }
 
 /**
- * getContent() -- Checks if element type is 'price' and if true, returns a concatenated string
+ * Helper function that returns proper formatting for a string if it is a price string for the Buy button.
+ * @param {string} elementType A string that represents current object key.
+ * @param {string} content A string that represents value of current object key.
  */
 function getContent(elementType, content) {
 
