@@ -46,7 +46,7 @@ const data = [
 
 
 /** 
- * "MAIN" FUNCTION -- Display page with given array
+ *  "MAIN" FUNCTION -- Display page with given data array
  */ 
 
 displayCards(data);
@@ -54,6 +54,7 @@ displayCards(data);
 // -----------------------------------------------------
 // FUNCTION DEFINITIONS
 // -----------------------------------------------------
+
 function displayCards(elementArray) {
 
     elementArray.forEach(function(article) {
@@ -62,18 +63,17 @@ function displayCards(elementArray) {
         const newCard = document.createElement('div');
         newCard.className = 'card';
     
-        // Loop through key/value pairs in each object in the DATA array
+        // Loop through key/value pairs in each object in the DATA array and create a card div for each object
         for (var key in article) {
             populateCard(key, article[key], newCard);
         }
     
-        // Set color
+        // Set color of card div
         newCard.style.backgroundColor = article.color;
     
         // Append card to container
         document.querySelector('.card-row').appendChild(newCard);
     })
-
 }
 
 /** 
@@ -167,7 +167,7 @@ function sortByPrice(articleArray) {
 
     articleArray.sort(function(a, b) {
 
-        // get int of price strings
+        // Convert price strings to integers
         let numA = Number(a.price.substr(1));
         let numB = Number(b.price.substr(1));
 
@@ -179,13 +179,6 @@ function sortByPrice(articleArray) {
         }
     })
 }
-
-// SORT BY COLOR (sorts alphabetically with const variable names / groups same colors together)
-// function sortByColor(articleArray) {
-//     articleArray.sort(function (a, b) {
-
-//     })
-// }
 
 // -----------------------------------------------------
 // EVENT HANDLERS
@@ -204,5 +197,3 @@ document.querySelector('.sort-button-price').onclick = function() {
     sortByPrice(data);
     displayCards(data);
 }
-
-// SORT BY COLOR
