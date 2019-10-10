@@ -83,12 +83,7 @@ function populateCard(elementType, content, parentDiv) {
         cardElement.className = getCssClassName(elementType);
 
         // Set content of element
-        if (elementType == 'price') {
-            cardElement.appendChild(document.createTextNode("Read for " + content));
-        }
-        else {
-            cardElement.appendChild(document.createTextNode(content));
-        }
+        cardElement.appendChild(document.createTextNode(getContent(elementType, content)));
 
         // Append to parent
         parentDiv.appendChild(cardElement);
@@ -121,5 +116,15 @@ function getCssClassName(elementType) {
     }
     else if (elementType == 'price') {
         return 'buy-button';
+    }
+}
+
+// getContent() -- Checks element type and returns the content of element accordingly
+function getContent(elementType, content) {
+    if (elementType == 'price') {
+        return "Read for " + content;
+    }
+    else {
+        return content;
     }
 }
