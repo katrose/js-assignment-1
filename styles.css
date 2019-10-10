@@ -53,7 +53,7 @@ nav .container ul li {
 }
 
 /* TILES */
-.sort-button {
+.sort-button-name, .sort-button-price, .sort-button-color {
     /* Duplicate code for now */
     background: white;
     color: black;

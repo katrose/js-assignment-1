@@ -46,30 +46,35 @@ const data = [
 
 
 /** 
- * "MAIN" -- Loop through objects in given data array
+ * "MAIN" -- Display page with given array
  */ 
 
-data.forEach(function(article) {
-
-    // Create card div
-    const newCard = document.createElement('div');
-    newCard.className = 'card';
-
-    // Loop through key/value pairs in each object in the DATA array
-    for (var key in article) {
-        populateCard(key, article[key], newCard);
-    }
-
-    // Set color
-    newCard.style.backgroundColor = article.color;
-
-    // Append card to container
-    document.querySelector('.card-row').appendChild(newCard);
-})
+displayCards(data);
 
 // -----------------------------------------------------
 // HELPER FUNCTIONS
 // -----------------------------------------------------
+function displayCards(elementArray) {
+
+    elementArray.forEach(function(article) {
+
+        // Create card div
+        const newCard = document.createElement('div');
+        newCard.className = 'card';
+    
+        // Loop through key/value pairs in each object in the DATA array
+        for (var key in article) {
+            populateCard(key, article[key], newCard);
+        }
+    
+        // Set color
+        newCard.style.backgroundColor = article.color;
+    
+        // Append card to container
+        document.querySelector('.card-row').appendChild(newCard);
+    })
+
+}
 
 /** 
  * populateCard() -- creates an HTML object with an object key (elementType) for the HTML tag, the key's associated value (content) as content, and * appends it to a container (parentDiv).
@@ -144,11 +149,7 @@ function getContent(elementType, content) {
     }
 }
 
-function displayCards(elementArray) {
-
-    // TODO: For each card in the array, append it to parent container
-}
-
+// SORT FUNCTIONS
 function sortByName(articleArray) {
 
     articleArray.sort(function(a, b) {
@@ -161,19 +162,22 @@ function sortByName(articleArray) {
     })
 
 }
-// Get all price strings from data array
-function getPrices(dataArr) {
-    let prices = [];
 
-    dataArr.forEach(function (article) {
+function sortByPrice(articleArray) {
 
-        for (var key in article) {
-            if (key == 'price') {
-                prices.push(article[key]);
-            }
+    articleArray.sort(function(a, b) {
+
+        // get int of price strings
+        let numA = Number(a.price.substr(1));
+        let numB = Number(b.price.substr(1));
+
+        if (numA < numB) {
+            return -1;
+        }
+        else {
+            return 1;
         }
     })
-    return prices;
 }
 
 // -----------------------------------------------------
@@ -184,21 +188,15 @@ function getPrices(dataArr) {
 document.querySelector('.sort-button-name').onclick = function() {
     document.querySelector('.card-row').innerHTML = "";
     sortByName(data);
-    data.forEach(function(article) {
-
-        // Create card div
-        const newCard = document.createElement('div');
-        newCard.className = 'card';
-    
-        // Loop through key/value pairs in each object in the DATA array
-        for (var key in article) {
-            populateCard(key, article[key], newCard);
-        }
-    
-        // Set color
-        newCard.style.backgroundColor = article.color;
-    
-        // Append card to container
-        document.querySelector('.card-row').appendChild(newCard);
-    })
+    displayCards(data);
 }
+
+// SORT BY PRICE
+document.querySelector('.sort-button-price').onclick = function() {
+    document.querySelector('.card-row').innerHTML = "";
+    sortByPrice(data);
+    displayCards(data);
+}
+
+// SORT BY COLOR
+
