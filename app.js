@@ -96,7 +96,7 @@ function populateCard(elementType, content, parentDiv) {
 
 }
 
-// FUNCTION: GET HTML TAG -- Takes a key from object and "converts" it to appropriate HTML tag
+// getHtmlTag() -- Takes a key from object and "converts" it to appropriate HTML tag
 function getHtmlTag(elementType) {
 
     if (elementType == 'topic') {
@@ -110,7 +110,7 @@ function getHtmlTag(elementType) {
     }
 }
 
-// FUNCTION: GET HTML TAG -- Takes a key from object and "converts" it to appropriate CSS class name as defined in stylesheet
+// getCssClassName() -- Takes a key from object and "converts" it to appropriate CSS class name as defined in stylesheet
 function getCssClassName(elementType) {
 
     if (elementType == 'topic') {
