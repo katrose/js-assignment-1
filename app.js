@@ -1,9 +1,9 @@
-const green = 'rgba(118,174, 170, 1)'
-const black = 'rgba(23,35, 50, 1)'
-const brown = 'rgba(205,164, 133, 1)'
-const greenblue = 'rgba(62,171, 201, 1)'
-const pink = 'rgba(254,156, 161, 1)'
-const blue = 'rgba(98,189, 254, 1)'
+const green = 'rgba(118, 174, 170, 1)'
+const black = 'rgba(23, 35, 50, 1)'
+const brown = 'rgba(205, 164, 133, 1)'
+const greenblue = 'rgba(62, 171, 201, 1)'
+const pink = 'rgba(254, 156, 161, 1)'
+const blue = 'rgba(98, 189, 254, 1)'
 
 const data = [
     {
@@ -46,13 +46,13 @@ const data = [
 
 
 /** 
- * "MAIN" -- Display page with given array
+ * "MAIN" FUNCTION -- Display page with given array
  */ 
 
 displayCards(data);
 
 // -----------------------------------------------------
-// HELPER FUNCTIONS
+// FUNCTION DEFINITIONS
 // -----------------------------------------------------
 function displayCards(elementArray) {
 
@@ -148,55 +148,3 @@ function getContent(elementType, content) {
         return content;
     }
 }
-
-// SORT FUNCTIONS
-function sortByName(articleArray) {
-
-    articleArray.sort(function(a, b) {
-        if (a.topic < b.topic) {
-            return -1;
-        }
-        else {
-            return 1;
-        }
-    })
-
-}
-
-function sortByPrice(articleArray) {
-
-    articleArray.sort(function(a, b) {
-
-        // get int of price strings
-        let numA = Number(a.price.substr(1));
-        let numB = Number(b.price.substr(1));
-
-        if (numA < numB) {
-            return -1;
-        }
-        else {
-            return 1;
-        }
-    })
-}
-
-// -----------------------------------------------------
-// EVENT HANDLERS
-// -----------------------------------------------------
-
-// SORT BY NAME
-document.querySelector('.sort-button-name').onclick = function() {
-    document.querySelector('.card-row').innerHTML = "";
-    sortByName(data);
-    displayCards(data);
-}
-
-// SORT BY PRICE
-document.querySelector('.sort-button-price').onclick = function() {
-    document.querySelector('.card-row').innerHTML = "";
-    sortByPrice(data);
-    displayCards(data);
-}
-
-// SORT BY COLOR
-
