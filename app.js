@@ -148,3 +148,61 @@ function getContent(elementType, content) {
         return content;
     }
 }
+
+// SORT FUNCTIONS
+function sortByName(articleArray) {
+
+    articleArray.sort(function(a, b) {
+        if (a.topic < b.topic) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    })
+
+}
+
+function sortByPrice(articleArray) {
+
+    articleArray.sort(function(a, b) {
+
+        // get int of price strings
+        let numA = Number(a.price.substr(1));
+        let numB = Number(b.price.substr(1));
+
+        if (numA < numB) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    })
+}
+
+// SORT BY COLOR (sorts alphabetically with const variable names / groups same colors together)
+// function sortByColor(articleArray) {
+//     articleArray.sort(function (a, b) {
+
+//     })
+// }
+
+// -----------------------------------------------------
+// EVENT HANDLERS
+// -----------------------------------------------------
+
+// SORT BY NAME
+document.querySelector('.sort-button-name').onclick = function() {
+    document.querySelector('.card-row').innerHTML = "";
+    sortByName(data);
+    displayCards(data);
+}
+
+// SORT BY PRICE
+document.querySelector('.sort-button-price').onclick = function() {
+    document.querySelector('.card-row').innerHTML = "";
+    sortByPrice(data);
+    displayCards(data);
+}
+
+// SORT BY COLOR
