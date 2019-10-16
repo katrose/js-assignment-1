@@ -52,7 +52,9 @@ nav .container ul li {
     }
 }
 
-/* SORT BUTTONS */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SORT SECTION
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .sort-container {
     margin-top: 1em;
 }
@@ -68,6 +70,12 @@ nav .container ul li {
     border-radius: 4px;
     font-size: 12px;
     font-weight: 700;
+    cursor: pointer;
+}
+
+.sort-container ul li:hover {
+  background-color: black;
+  color: white;
 }
 
 /* TILES */

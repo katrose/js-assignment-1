@@ -47,34 +47,35 @@ const data = [
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 "MAIN" FUNCTION: Display cards on the page
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-displayCards(data);
+const container = document.querySelector('.card-row');
+displayCards(data, container);
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 FUNCTION DEFINITIONS
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
 /**
- * Takes an array of objects and outputs them as <div> elements in the DOM.
+ * Takes an array of objects and outputs them as <div> elements inside its parent container.
  * @param {object} elementArray An array of objects representing articles.
  */
-
-function displayCards(elementArray) {
+function displayCards(elementArray, parentDiv) {
 
     elementArray.forEach(function(article) {
 
-        // Create card div
+        // 1. Create card div
         const newCard = document.createElement('div');
         newCard.className = 'card';
     
-        // Loop through key/value pairs in each object in the DATA array and create a card div for each object
+        // 2. Loop through key/value pairs in each object in the data array and create a card div for each object
         for (var key in article) {
             populateCard(key, article[key], newCard);
         }
     
-        // Set color of card div
+        // 3. Set color of card div
         newCard.style.backgroundColor = article.color;
     
-        // Append card to container
-        document.querySelector('.card-row').appendChild(newCard);
+        // 4. Append card to parent container
+        parentDiv.appendChild(newCard);
     })
 }
 
@@ -156,10 +157,15 @@ function getContent(elementType, content) {
     else {
         return content;
     }
-
 }
 
-// SORT FUNCTIONS
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SORT FUNCTIONS
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/**
+ * Alphabetically sorts objects in an array using the 'name' values
+ * @param {object} articleArray Array of article objects.
+ */
 function sortByName(articleArray) {
 
     articleArray.sort(function(a, b) {
@@ -173,6 +179,10 @@ function sortByName(articleArray) {
 
 }
 
+/**
+ * Sorts objects in an array in increasing order using the 'price' values
+ * @param {object} articleArray Array of article objects.
+ */
 function sortByPrice(articleArray) {
 
     articleArray.sort(function(a, b) {
@@ -196,8 +206,14 @@ function sortByPrice(articleArray) {
 
 // SORT BY NAME
 document.querySelector('.sort-button-name').onclick = function() {
+
+    // 1. Clear container div
     document.querySelector('.card-row').innerHTML = "";
+
+    // 2. Sort data array
     sortByName(data);
+
+    // 3. Re-display newly sorted array in the container div
     displayCards(data);
 }
 
