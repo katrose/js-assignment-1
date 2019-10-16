@@ -44,7 +44,6 @@ const data = [
     }
 ]
 
-
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 "MAIN" FUNCTION: Display cards on the page
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -57,6 +56,7 @@ FUNCTION DEFINITIONS
  * Takes an array of objects and outputs them as <div> elements in the DOM.
  * @param {object} elementArray An array of objects representing articles.
  */
+
 function displayCards(elementArray) {
 
     elementArray.forEach(function(article) {
@@ -65,18 +65,17 @@ function displayCards(elementArray) {
         const newCard = document.createElement('div');
         newCard.className = 'card';
     
-        // Loop through key/value pairs in each object in the DATA array
+        // Loop through key/value pairs in each object in the DATA array and create a card div for each object
         for (var key in article) {
             populateCard(key, article[key], newCard);
         }
     
-        // Set color
+        // Set color of card div
         newCard.style.backgroundColor = article.color;
     
         // Append card to container
         document.querySelector('.card-row').appendChild(newCard);
     })
-
 }
 
 /**
@@ -157,4 +156,54 @@ function getContent(elementType, content) {
     else {
         return content;
     }
+
+}
+
+// SORT FUNCTIONS
+function sortByName(articleArray) {
+
+    articleArray.sort(function(a, b) {
+        if (a.topic < b.topic) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    })
+
+}
+
+function sortByPrice(articleArray) {
+
+    articleArray.sort(function(a, b) {
+
+        // Convert price strings to integers
+        let numA = Number(a.price.substr(1));
+        let numB = Number(b.price.substr(1));
+
+        if (numA < numB) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    })
+}
+
+// -----------------------------------------------------
+// EVENT HANDLERS
+// -----------------------------------------------------
+
+// SORT BY NAME
+document.querySelector('.sort-button-name').onclick = function() {
+    document.querySelector('.card-row').innerHTML = "";
+    sortByName(data);
+    displayCards(data);
+}
+
+// SORT BY PRICE
+document.querySelector('.sort-button-price').onclick = function() {
+    document.querySelector('.card-row').innerHTML = "";
+    sortByPrice(data);
+    displayCards(data);
 }
