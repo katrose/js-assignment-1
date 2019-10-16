@@ -57,6 +57,7 @@ FUNCTION DEFINITIONS
 /**
  * Takes an array of objects and outputs them as <div> elements inside its parent container.
  * @param {object} elementArray An array of objects representing articles.
+ * @param {object} parentDiv The DOM container that will contain the <div> elements generated in this function.
  */
 function displayCards(elementArray, parentDiv) {
 
