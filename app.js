@@ -66,7 +66,7 @@ function displayCards(elementArray, parentDiv) {
         const newCard = document.createElement('div');
         newCard.className = 'card';
     
-        // 2. Loop through key/value pairs in each object in the data array and create a card div for each object
+        // 2. Loop through key/value pairs in each object in the data array and use these as content for card div
         for (var key in article) {
             populateCard(key, article[key], newCard);
         }
@@ -80,7 +80,7 @@ function displayCards(elementArray, parentDiv) {
 }
 
 /**
- * Creates an HTML element using the data in an object, and appends the HTML element to its parent container.
+ * Helper function that creates an HTML element with values from an object, and appends the HTML element to its parent container.
  * @param {string} elementType A string that represents current object key.
  * @param {string} content A string that represents value associated with current object key.
  * @param {object} parentDiv An object that represents the "card" DOM element that will contain the key/value pairs.
@@ -208,18 +208,18 @@ function sortByPrice(articleArray) {
 document.querySelector('.sort-button-name').onclick = function() {
 
     // 1. Clear container div
-    document.querySelector('.card-row').innerHTML = "";
+    container.innerHTML = "";
 
     // 2. Sort data array
     sortByName(data);
 
     // 3. Re-display newly sorted array in the container div
-    displayCards(data);
+    displayCards(data, container);
 }
 
 // SORT BY PRICE
 document.querySelector('.sort-button-price').onclick = function() {
-    document.querySelector('.card-row').innerHTML = "";
+    container.innerHTML = "";
     sortByPrice(data);
-    displayCards(data);
+    displayCards(data, container);
 }
