@@ -205,7 +205,7 @@ function sortByPrice(articleArray) {
 // -----------------------------------------------------
 
 // SORT BY NAME
-document.querySelector('.sort-button-name').onclick = function() {
+document.querySelector('.sort-button-name').addEventListener('click', function() {
 
     // 1. Clear container div
     container.innerHTML = "";
@@ -215,11 +215,11 @@ document.querySelector('.sort-button-name').onclick = function() {
 
     // 3. Re-display newly sorted array in the container div
     displayCards(data, container);
-}
+})
 
 // SORT BY PRICE
-document.querySelector('.sort-button-price').onclick = function() {
+document.querySelector('.sort-button-price').addEventListener('click', function() {
     container.innerHTML = "";
     sortByPrice(data);
     displayCards(data, container);
-}
+})
