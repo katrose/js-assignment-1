@@ -163,7 +163,7 @@ function getContent(elementType, content) {
 SORT FUNCTIONS
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /**
- * Alphabetically sorts objects in an array using the 'name' values
+ * Alphabetically sorts objects in an array using the 'topic' values
  * @param {object} articleArray Array of article objects.
  */
 function sortByName(articleArray) {

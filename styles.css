@@ -78,7 +78,9 @@ SORT SECTION
   color: white;
 }
 
-/* TILES */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+TILES
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 .card-row {
     display: flex;
