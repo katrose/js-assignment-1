@@ -1,2 +1,5 @@
-# js-assignment-1
-CPNT 260 - JS Assignment #1
+# Assignment #1 - Adding Tiles
+
+Assignment 1 in plain Javascript.
+
+With buttons to sort cards by name and price!
